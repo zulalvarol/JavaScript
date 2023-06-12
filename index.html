@@ -1,0 +1,258 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="script.js"></script>
+    <title>Javascript Temelleri</title>
+    <style>
+        .header{
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            background: pink;
+        }
+        .container{
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Javascript Temelleri</h1>
+    </div>
+    <hr>
+    <div class = "container">
+        <p id = "parag1"> Paragraf 1</p>
+        <button onclick = "renkdegistir()">renk</button>
+        <!-- //butona tıklayınca içerik değişti-->
+        <button onclick= "this.innerHTML = 'butona tıklandı'">Tıkla</button>
+        <hr>
+        <button onclick= "tikla(this)">Tıkla</button>
+        <button onmouseover="mouseover()" onmouseout="mouseout()">mouse dene</button>
+        <form name = "form1" action = "gonder.php" method="POST" onsubmit="return dogrula();">
+            <input type = "text" name = "isim"/>
+            <button type="submit ">Gonder</button>
+        </form>
+    </div>
+    <script>
+        function dogrula(){
+            var form = document.forms["form1"]; //sadece adı form1 olanı al
+            var deger = form["isim"].value; //sadece isim olanları
+
+            if (deger == ""){
+                alert("isim alanı boş bırakılamaz...");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <!--
+    <script>
+        function mouseover(){
+            var element = document.getElementById("parag1");
+            element.innerHTML = "Mouse over effecti";
+        }
+        function mouseout(){
+            var element = document.getElementById("parag1");
+            element.innerHTML = "Mouse out effecti";
+        }
+        
+    </script>
+    -->
+    <!--
+    <script>
+        function tikla(element){
+            element.innerHTML = "BUTONA TIKLANDI";
+        }
+        function renkdegistir(){
+            var element = document.getElementById("parag1");
+            element.style.color = "cyan";
+        }
+    </script>
+    -->
+    <!--
+    <script>
+        function tikla(){
+        alert("butona tıklandı");
+        }
+    </script>
+    -->
+    
+    <script>
+        /*
+        var sayi = 20;
+        var sayi2 = 30;
+        var sayi3 = 40;
+        var a = "js";
+        var b = "python";
+        var x = 10;
+        var y = x * 2 + 10;
+        alert("y: " + y);
+
+        alert("toplam: " + sayi + sayi2 + sayi3);
+        alert("toplam: " + (sayi + sayi2 + sayi3));
+        alert(a + b);
+        
+       var array = ["java", "python", "c++", "zulal"];
+       alert(array[3]);
+       array[4] =  "php";
+       alert(array[4]);
+       array.push("go");
+       alert(array.length);
+       
+
+       for(var i=0; i<10; i++){
+        console.log("i değeri: " + i);
+        }
+        
+
+        var i = 0;
+        while (i < 100){
+            console.log("i değeri: " + i);
+            i = i + 2;
+        }
+        
+       var sayilar = [32, 1, 100, 5, -1, 90]
+       console.log("dizi elemanları...");
+       for(var i = 0; i<sayilar.length; i++){
+        console.log("eleman: " +sayilar[i])
+       }
+       sayilar.forEach(function(sayi){
+        console.log("eleman: " + sayi);
+       });
+       
+      var a = 5;
+      var b = 6;
+
+      if (a != b){
+        console.log("eşit değil");
+      }
+
+      if (10 < 20){
+        console.log("küçüktür");
+      }
+
+      if (2 === "2"){ 
+        // == yapıldığında string içindekini de aynı olarak alıyor 
+        //bir kontrol daha için ikinci bir = eklendi === oldu
+        //!== değil için kullanılabilir
+        console.log("farklı veri tipi");
+      }
+
+
+      if(2 == 2 && "zulal" == "zulal"){
+        console.log("evet");
+      }
+      if(2 == 2 || "zulal" == "zülal"){ 
+        // en az bir koşul doğru
+        console.log("evet");
+      }
+    
+     if (! (5<4)){ 
+        //5, 4ten küçük değildir
+        console.log("Evet");
+     }
+     
+    var a=5, b=6;
+    if (a == b){
+        console.log("eşit");
+    }
+    else{
+        console.log("eşit değil");
+    }
+    
+    var islem = 4;
+    if (islem == 1){
+        console.log("işlem 1");
+    }
+    else if (islem == 2){
+        console.log("işlem 2");
+    }
+    else{
+        console.log("geçersiz işlem");
+    }
+    
+   var islem = 2;
+   switch(islem){
+    case 1:
+        console.log("işlem 1");
+        break; //case tamamlanınca devam etme
+   
+    case 2:
+    console.log("işlem 2");
+            break;
+    default:
+        console.log("geçersiz işlem");
+    }
+
+    
+   //fonksiyon tanımla
+   function selamla(isim){ //değişken türü tanımlamaya gerek yok
+    console.log("merhaba, " + isim);
+   }
+   selamla("zulal");
+   selamla("zülal");
+
+   function toplama (a,b,c){
+    console.log("toplam: " + (a+b+c));
+    return a+b+c;
+   }
+   toplama(1,2,3);
+   var toplam = toplama(3,4,5);
+   console.log("toplamları: " + toplam);
+
+   
+  var calisan = {
+    isim: "zulal",
+    soyisim: "varol",
+    numara: 555555,
+    diller: ["php", "java", "c++"],
+    
+    isimBilgileri: function(){
+       return "Çalışan ismi: " + this.isim + " soyisim: " + this.soyisim; 
+    },
+    adres: {
+        cadde: "bağdat",
+        sokak: "zambak"
+    }
+  };
+  console.log(calisan.isim);
+  console.log(calisan.numara);
+  console.log(calisan.diller);
+  console.log(calisan.adres.cadde);
+  console.log(calisan.adres.sokak);
+  console.log(calisan.isimBilgileri());
+
+  
+ var calisan = new Object();
+ calisan.isim = "zulal";
+ calisan.soyisim = "varol";
+ calisan.isimBilgileri = function(){
+    return "isim bilgileri: " + this.isim + " " + this.soyisim;
+
+ };
+ console.log(calisan.isim);
+ console.log(calisan.soyisim);
+ console.log(calisan.isimBilgileri());
+ 
+
+ function Calisan(isim, soyisim, numara){
+    this.isim = isim;
+    this.soyisim = soyisim;
+    this.numara = numara;
+    this.bilgileriGoster = function(){
+        return "isim: " + this.isim + "\n soyisim: " +this.soyisim + "\n numara: " + this.numara;
+    }
+ }
+ var calisan1 = new Calisan("zulal", "varol", "123456");
+ var calisan2 = new Calisan("deneme", "sürümü", "7890");
+ console.log(calisan1.bilgileriGoster());
+ console.log(calisan2.bilgileriGoster());
+ */
+
+       
+    </script>
+</body>
+</html>
